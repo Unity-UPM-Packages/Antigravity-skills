@@ -1,7 +1,7 @@
 ---
-trigger: always_on
-glob:
-description: SOLID principles, script composition over inheritance, and interface-driven design for all C# systems.
+trigger: glob
+description: Enforces SOLID principles and Script Composition to prevent monolithic MonoBehaviours.
+globs: *.cs
 ---
 
 # Rule 02: C# SOLID & Script Composition

@@ -1,7 +1,7 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
-description: URP/mobile shader governance, overdraw prevention, lighting constraints, and draw call batching for mobile rendering.
+description: Mobile-first render optimization: draw calls, shaders, lighting, and overdraw prevention.
 ---
 
 # Rule 08: Mobile Graphics & Render Optimization

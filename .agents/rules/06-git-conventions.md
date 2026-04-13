@@ -1,7 +1,7 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
-description: Conventional Commits format, atomic commits, .meta file safety, and .gitattributes requirements for Unity projects.
+description: Conventional commit standards and Unity-safe versioning (meta files, asset tracking).
 ---
 
 # Rule 06: Git & Code Versioning Conventions

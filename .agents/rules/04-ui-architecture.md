@@ -1,7 +1,7 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
-description: MVP pattern for UI — Views are passive display surfaces that never contain game logic. Data flows via events and Presenter classes.
+description: Enforces MVP pattern and strict separation between game logic and UI views.
 ---
 
 # Rule 04: UI Architecture (MVP Pattern)

@@ -1,7 +1,7 @@
 ---
-trigger: always_on
-glob:
-description: Three-tier async strategy — Coroutines for UI, async/await for I/O, UniTask for gameplay-critical operations with CancellationToken lifecycle.
+trigger: glob
+description: Defines the tiered asynchronous strategy (Coroutine vs Task vs UniTask) based on complexity.
+globs: *.cs
 ---
 
 # Rule 07: Dynamic Asynchronous Strategy
