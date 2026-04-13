@@ -5,9 +5,6 @@ description: Use when investigating framerate drops, GC allocation spikes, memor
 
 # Skill: Unity Profiler Mind
 
-## Capability Overview
-The AI operates with the perspective of an embedded Unity Profiler, capable of detecting frame-time latency and excessive overhead **before the code runs**. When performance concerns arise, this skill provides a structured investigation protocol rather than guesswork.
-
 ---
 
 ## Investigation Protocol

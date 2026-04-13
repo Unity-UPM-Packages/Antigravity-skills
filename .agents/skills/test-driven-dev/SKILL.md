@@ -3,7 +3,7 @@ name: test-driven-dev
 description: Use when writing tests for new or existing logic, validating system behaviour, or setting up Unity NUnit EditMode and PlayMode test suites. Also activates proactively when the AI implements any pure C# logic that has no accompanying test file, or detects untested edge cases in existing code.
 ---
 
-# Workflow: Test-Driven AI (TDD)
+# Skill: Test-Driven AI (TDD)
 
 ## Objective
 Enforce autonomous verification of mechanics. The AI must prove its code functions correctly via the Unity Test Framework **before** requesting manual human review. The user's role is purely "Reviewer" — not debugger.

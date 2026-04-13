@@ -5,9 +5,6 @@ description: Use when optimizing uGUI Canvas layouts, batching elements to reduc
 
 # Skill: UI Performance Optimization (uGUI)
 
-## Capability Overview
-Transforms the AI into a UI Technical Artist. Understands the hidden costs of Canvas reconstruction sequences and batching routines built into Unity's rendering pipeline. Every UI architecture decision must be justified by its rendering cost, not just its visual outcome.
-
 ---
 
 ## Core Principles
@@ -161,7 +158,6 @@ Before shipping any UI screen:
 ---
 
 ## Cross-Skill References
-- Canvas construction via MCP → `skills/mcp-auto-architect`
-- Building UI from wireframe → `skills/wireframe-to-unity-mcp`
+- UI construction via MCP → `skills/prompt-to-mcp-builder`
 - Responsive anchor decisions → `rules/05-responsive-ugui.md`
 - Profiling canvas rebuild cost → `skills/unity-profiler-mind`

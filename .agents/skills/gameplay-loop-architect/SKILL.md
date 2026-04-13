@@ -5,10 +5,8 @@ description: Use when designing the core game loop, managing game states (menu, 
 
 # Skill: Gameplay Loop Architect
 
-## Capability Overview
-Governs the design of the game's top-level state machine — the system that orchestrates transitions between Menu, Loading, Playing, Paused, Victory, and Game Over states. This is the backbone of any game. Without a clean game loop architecture, every other system eventually couples to some variation of "if (GameManager.Instance.IsPlaying)" scattered across the codebase.
-
 ---
+
 
 ## The Game Loop State Machine
 
@@ -157,7 +155,7 @@ public sealed class GameplayState : IGameState
         _winChecker.OnLoseConditionMet -= HandleGameOver;
     }
 
-    public void OnUpdate() { } // Game world updates itself — no polling needed here
+    public void OnUpdate() { }
 
     private void HandlePause() => _stateMachine.Enter<PausedState>();
     private void HandleVictory() => _stateMachine.Enter<VictoryState>();
@@ -182,8 +180,8 @@ public sealed class PausedState : IGameState
 
     public void OnEnter()
     {
-        Time.timeScale = 0f; // Freeze game world
-        _audio.SetVolume(AudioChannel.Music, 0.3f); // Duck music
+        Time.timeScale = 0f;
+        _audio.SetVolume(AudioChannel.Music, 0.3f);
         _input.OnPausePressed += HandleResume;
     }
 
@@ -315,7 +313,7 @@ public sealed class GameBootstrapper : MonoBehaviour
 
 ## UI Reaction to State Changes
 
-UI screens listen to `IGameStateMachine.OnStateChanged` — they must NEVER poll the state machine or call game logic. Inject via `Construct()` (manual) or `[Inject]` attribute (if VContainer is used):
+UI screens listen to `IGameStateMachine.OnStateChanged` — they must NEVER poll the state machine or call game logic. Inject via `Construct()`:
 
 ```csharp
 public sealed class PauseMenuView : MonoBehaviour

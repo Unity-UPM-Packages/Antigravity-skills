@@ -5,9 +5,6 @@ description: Use when adding multi-language support, setting up Unity Localizati
 
 # Skill: Localization (i18n)
 
-## Capability Overview
-The agent designs and implements multi-language support using Unity's official Localization package. When localization is needed, the agent proactively detects hardcoded text, sets up the correct table structure, implements runtime locale switching, and handles platform-specific locale detection — without requiring manual guidance on each step.
-
 ---
 
 ## Phase 1 — Decision: Do We Need Localization?

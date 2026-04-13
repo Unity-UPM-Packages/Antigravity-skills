@@ -5,9 +5,6 @@ description: Use when designing audio systems, managing music transitions, pooli
 
 # Skill: Audio Architecture
 
-## Capability Overview
-Governs the design and implementation of all audio systems. Audio is frequently an afterthought that becomes a performance liability and maintenance nightmare. A proper audio architecture decouples sound triggers from game logic, pools AudioSources, and uses AudioMixer routing to enable dynamic mixing, muting, and audio ducking.
-
 ---
 
 ## Core Architecture: AudioService
@@ -70,12 +67,10 @@ public sealed class AudioService : IAudioService
         _registry = registry;
         _mixer = mixer;
 
-        // Music source — dedicated, persistent
         _musicSource = CreateAudioSource(audioRoot, "MusicSource");
         _musicSource.loop = true;
         _musicSource.outputAudioMixerGroup = mixer.FindMatchingGroups("Music")[0];
 
-        // SFX pool — pre-allocated
         _sfxPool = new Queue<AudioSource>(SfxPoolSize);
         for (int i = 0; i < SfxPoolSize; i++)
         {
@@ -101,7 +96,6 @@ public sealed class AudioService : IAudioService
 
         source.Play();
 
-        // Return to pool after clip duration
         ReturnToPoolAfter(source, clip.length).Forget();
     }
 

@@ -5,9 +5,6 @@ description: Use when architecting C# components, reviewing component responsibi
 
 # Skill: Modular Design Thinking
 
-## Capability Overview
-This skill is the foundational mindset of the architectural AI. When deciding how to integrate code, always prefer "Plug and Play" behavior: components must be attachable, detachable, and testable in isolation — without destroying the rest of the system.
-
 ---
 
 ## Core Principles
@@ -52,7 +49,6 @@ public sealed class EnemyController : MonoBehaviour { }
 Always define behavior as an interface **before** writing implementation. This enforces Dependency Inversion and makes unit testing possible without scene setup.
 
 ```csharp
-// Step 1: Define the contract
 public interface IHealthSystem
 {
     int CurrentHealth { get; }
@@ -63,7 +59,6 @@ public interface IHealthSystem
     event Action OnDied;
 }
 
-// Step 2: Implement
 public sealed class HealthSystem : IHealthSystem { ... }
 ```
 

@@ -3,10 +3,7 @@ name: asset-loading
 description: Use when loading dynamic resources, prefabs, environments, or audio assets at runtime in Unity. Also activates proactively when the AI detects Resources.Load, Resources.LoadAsync, or direct asset path strings anywhere in the codebase — these must always be migrated to Addressables.
 ---
 
-# Workflow: Addressables & Asset Pipeline
-
-## Objective
-When tasked with spawning assets dynamically, managing large environments, or engineering loading screens, enforce memory-safe asset management through Unity Addressables. The `Resources.Load()` pattern is a hard architectural violation on mobile.
+# Skill: Addressables & Asset Pipeline
 
 ---
 
@@ -33,7 +30,6 @@ Before coding any loading logic, confirm:
 ### Step 2 — Safe Asset Loading Pattern
 
 ```csharp
-// Load and instantiate a prefab safely
 public sealed class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private AssetReferenceGameObject _enemyRef;
@@ -66,7 +62,6 @@ public sealed class EnemySpawner : MonoBehaviour
 When loading a category of assets (all enemies, all UI icons):
 
 ```csharp
-// Load all assets tagged with "EnemyPrefabs" label
 private async UniTask LoadEnemyAssetsAsync(CancellationToken ct)
 {
     var handle = Addressables.LoadAssetsAsync<GameObject>(
@@ -91,7 +86,6 @@ private async UniTask LoadEnemyAssetsAsync(CancellationToken ct)
 For scene transitions requiring a loading screen:
 
 ```csharp
-// Async scene load with progress reporting
 public async UniTask LoadSceneAsync(string addressableSceneKey, IProgress<float> progress, CancellationToken ct)
 {
     var handle = Addressables.LoadSceneAsync(addressableSceneKey, LoadSceneMode.Single);

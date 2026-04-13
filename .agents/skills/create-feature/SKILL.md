@@ -3,10 +3,7 @@ name: create-feature
 description: Use when implementing any new system, mechanic, functionality, or behaviour in the project — whether the user says "create", "add", "implement", "build", "I want X to happen", or describes desired behaviour. Also activates proactively when the AI determines a new independent system is needed to support a request. Enforces interface-first, modular, and UPM-extractable architecture on every implementation.
 ---
 
-# Workflow: Feature Implementation
-
-## Objective
-Establish a strict Standard Operating Procedure for building any new gameplay system. Features built outside this workflow accumulate technical debt immediately and become candidates for painful rewrites within 2–3 sprints.
+# Skill: Feature Implementation
 
 ---
 
@@ -46,7 +43,7 @@ public readonly struct ItemData
 {
     public string Id { get; }
     public string DisplayName { get; }
-    public Sprite Icon { get; }      // Note: Sprite ref OK for data bag; don't put logic here
+    public Sprite Icon { get; }
     public int Quantity { get; }
 
     public ItemData(string id, string displayName, Sprite icon, int quantity)
@@ -98,7 +95,6 @@ public sealed class InventoryView : MonoBehaviour
 
     private IInventorySystem _inventory;
 
-    // Called by DI framework or Bootstrapper
     public void Construct(IInventorySystem inventory)
     {
         _inventory = inventory;
@@ -113,7 +109,6 @@ public sealed class InventoryView : MonoBehaviour
 
     private void HandleItemAdded(ItemData item)
     {
-        // Trigger visual feedback only — no business logic here
         GetComponent<InventoryAnimator>().PlayAddAnimation(item);
     }
 }
@@ -141,17 +136,15 @@ public sealed class GameBootstrapper : MonoBehaviour
 
     private void Awake()
     {
-        // 1. Create pure logic systems (no MonoBehaviour needed)
         _inventory = new InventorySystem(_inventoryConfig.Capacity);
 
-        // 2. Inject into Views via Construct() — no FindObjectOfType, no Singleton
+        // 2. Wire views
         _inventoryView.Construct(_inventory);
         _playerView.Construct(_inventory);
     }
 
     private void OnDestroy()
     {
-        // Explicit cleanup if systems implement IDisposable
         (_inventory as IDisposable)?.Dispose();
     }
 }

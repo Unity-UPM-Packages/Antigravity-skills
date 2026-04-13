@@ -5,9 +5,6 @@ description: Use when architecting scene loading, transitions, additive scene wo
 
 # Skill: Scene Management & Bootstrapping
 
-## Capability Overview
-Governs all scene transition logic, async loading patterns, and per-scene dependency initialization. Poor scene management is a top cause of memory leaks, missing references, and inconsistent game states in Unity mobile projects.
-
 ---
 
 ## Core Rules

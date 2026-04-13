@@ -3,10 +3,7 @@ name: code-review
 description: Use when asked to review, audit, or inspect C# code in a Unity project. Also activates proactively when the AI reads any code and detects performance issues, architectural violations, missing null checks, GC allocations in hot paths, or security concerns — even if the user did not explicitly request a review.
 ---
 
-# Workflow: Code Review & Optimization Audit
-
-## Objective
-Critique existing code and identify architectural and performance anti-patterns. Output is always a **structured remediation report with exact code fixes** — never vague advice like "consider refactoring this."
+# Skill: Code Review & Optimization Audit
 
 ---
 

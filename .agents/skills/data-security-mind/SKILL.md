@@ -5,9 +5,6 @@ description: Use when architecting save games, protecting mobile PlayerPrefs, wr
 
 # Skill: Data Persistence & Security
 
-## Capability Overview
-The agent analyzes what data is being persisted and autonomously applies the appropriate protection tier. Mobile games are trivially tampered with via rooted devices and memory editors. This skill ensures saved data is structurally resistant to basic cheating without over-engineering the solution.
-
 ---
 
 ## Phase 1 — Data Classification (Run First, Always)
@@ -97,16 +94,13 @@ public sealed class SaveRepository : ISaveRepository
         string envelopeJson = await File.ReadAllTextAsync(_filePath, ct);
         SaveEnvelope envelope = JsonUtility.FromJson<SaveEnvelope>(envelopeJson);
 
-        // Integrity check — reject tampered saves
         if (ComputeHmac(envelope.Payload) != envelope.Signature)
         {
             Debug.LogWarning("[SaveRepository] Integrity check FAILED. Save data rejected.");
-            return SaveData.NewGame(); // Or trigger anti-cheat flow
+            return SaveData.NewGame();
         }
 
         SaveData data = JsonUtility.FromJson<SaveData>(envelope.Payload);
-
-        // Version migration
         return MigrateIfNeeded(data, envelope.Version);
     }
 
@@ -153,7 +147,7 @@ public sealed class CryptoSaveRepository : ICryptoSaveRepository
         byte[] plaintext = System.Text.Encoding.UTF8.GetBytes(json);
 
         // Encrypt with fresh random IV each save
-        byte[] (ciphertext, iv) = AesEncrypt(plaintext);
+        var (ciphertext, iv) = AesEncrypt(plaintext);
 
         // Sign the ciphertext (encrypt-then-sign)
         string signature = HmacSign(ciphertext);

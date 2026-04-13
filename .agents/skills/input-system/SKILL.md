@@ -5,9 +5,6 @@ description: Use when architecting player input handling using Unity's new Input
 
 # Skill: Input System Architecture
 
-## Capability Overview
-Governs the design and implementation of player input using Unity's **new Input System** package. Legacy `Input.GetKey()` and `Input.GetAxis()` are strictly forbidden — they don't support remapping, multiple control schemes, or mobile touch correctly. This skill enforces a clean abstraction layer so gameplay systems never depend directly on raw input.
-
 ---
 
 ## Core Principle: Input Abstraction Layer

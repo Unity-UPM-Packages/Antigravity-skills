@@ -5,10 +5,6 @@ description: Use when the user is stuck on architecture, needs a Gang of Four de
 
 # Skill: Design Pattern Architect
 
-## Capability Overview
-
-You possess encyclopedic mastery of Software Architecture Patterns (Gang of Four) and specialized Game Programming Patterns. You do **not** wait to be told how to design a system. Instead, you run a structured Decision Engine on every task — silently scanning the workspace for signals that demand a pattern intervention.
-
 ---
 
 ## Phase 1 — Situation Analysis (Always Run First)
@@ -132,20 +128,7 @@ If proposing 2–3 patterns, always render a comparison table:
 | **Recommended When** | Scale matters | Quick prototype | Full reactive system |
 
 ### 3.4 C# Architectural Skeleton
-Always provide a minimal code scaffold showing the pattern applied in Unity/C# context, following `01-coding-conventions.md` strictly (Allman braces, `_camelCase` privates, interfaces `I`-prefixed).
-
-```csharp
-// Example scaffold — replace with the actual pattern code
-public interface IExampleContract
-{
-    void Execute();
-}
-
-public sealed class ConcreteExample : IExampleContract
-{
-    public void Execute() { }
-}
-```
+Provide a minimal C# scaffold applying the chosen pattern in Unity context, following `01-coding-conventions.md` strictly (Allman braces, `_camelCase` privates, `I`-prefixed interfaces).
 
 ### 3.5 Integration Checklist
 End with a checkbox list the user can verify before merging:
