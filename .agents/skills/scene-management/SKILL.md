@@ -17,7 +17,7 @@ Governs all scene transition logic, async loading patterns, and per-scene depend
 | `SceneManager.LoadScene()` (synchronous) | **Forbidden** during gameplay — causes multi-frame freeze on mobile |
 | `DontDestroyOnLoad` abuse | Restricted — only for services that genuinely must persist (Audio, Analytics) |
 | Scene coupling | Scenes must never have direct GameObject references to other scenes |
-| Bootstrapping | Every scene must have a self-contained `LifetimeScope` or Bootstrapper |
+| Bootstrapping | Every scene must have a self-contained `Bootstrapper` (Manual DI default) or `LifetimeScope` (VContainer, if adopted) |
 
 ---
 
@@ -28,20 +28,20 @@ Governs all scene transition logic, async loading patterns, and per-scene depend
 ```
 [Persistent Scene]    — Loaded once at app launch, never unloaded
    ├── Core Services (AudioManager, AnalyticsService, InputSystem)
-   ├── Global LifetimeScope (VContainer root)
+   ├── PersistentBootstrapper (Manual DI root — creates and wires all global services)
    └── SceneLoader (manages all other scene transitions)
 
 [Menu Scene]          — Loaded additively over Persistent
    ├── MainMenuController
-   └── MenuLifetimeScope (child scope of Global)
+   └── MenuBootstrapper (receives global services via constructor injection)
 
 [Gameplay Scene]      — Loaded additively, Menu unloaded
-   ├── GameplayBootstrapper
+   ├── GameplayBootstrapper (scene-scoped DI root)
    ├── World/Level content
-   └── GameplayLifetimeScope (child scope of Global)
+   └── (global services passed from PersistentBootstrapper via SceneLoader)
 
 [UI Overlay Scene]    — Optionally additive (HUD, Pause screen)
-   └── HUDLifetimeScope
+   └── HUDBootstrapper (receives IAudioService, IInputProvider, etc.)
 ```
 
 ---
@@ -128,7 +128,7 @@ public sealed class LoadingScreenView : MonoBehaviour
 Each scene must initialize its own dependency tree without relying on other scenes' objects.
 
 ```csharp
-// GameplayBootstrapper.cs — first MonoBehaviour to run in Gameplay scene
+// GameplayBootstrapper.cs — Manual DI root for this scene (default pattern)
 public sealed class GameplayBootstrapper : MonoBehaviour
 {
     [SerializeField] private GameplayConfig _config;
@@ -140,19 +140,16 @@ public sealed class GameplayBootstrapper : MonoBehaviour
         IHealthSystem health = new HealthSystem(_config.PlayerMaxHealth);
         IInventorySystem inventory = new InventorySystem(_config.InventoryCapacity);
 
-        // 2. Inject into views
+        // 2. Inject into MonoBehaviour views via Construct()
         _playerView.Construct(health, inventory);
-
-        // 3. Register in local ServiceLocator for systems that need cross-reference
-        // (Only if VContainer child LifetimeScope is not configured)
     }
 }
 ```
 
-With **VContainer**:
+> **Optional upgrade — VContainer**: If the scene has a large number of dependencies (> 8 systems) or requires child scopes, introduce `LifetimeScope` from VContainer. Consult `skills/create-feature` (Step 5) for the migration decision framework.
 
 ```csharp
-// GameplayLifetimeScope.cs
+// GameplayLifetimeScope.cs — VContainer alternative (adopt only when Manual DI becomes unwieldy)
 public sealed class GameplayLifetimeScope : LifetimeScope
 {
     [SerializeField] private GameplayConfig _config;

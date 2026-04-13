@@ -181,12 +181,15 @@ public sealed class VirtualJoystick : MonoBehaviour, IPointerDownHandler, IDragH
 ```
 
 ### Touch Action Buttons (Attack, Jump)
-Use `IPointerDownHandler` / `IPointerUpHandler` on UI Buttons — map directly to the `IInputProvider` events:
+Use `IPointerDownHandler` / `IPointerUpHandler` on UI Buttons — map directly to the `IInputProvider` events via `Construct()`:
 
 ```csharp
 public sealed class TouchAttackButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [Inject] private IMobileInputBridge _bridge;
+    private IMobileInputBridge _bridge;
+
+    /// <summary>Injects the input bridge. Call from the scene Bootstrapper.</summary>
+    public void Construct(IMobileInputBridge bridge) => _bridge = bridge;
 
     public void OnPointerDown(PointerEventData _) => _bridge.NotifyAttackPressed();
     public void OnPointerUp(PointerEventData _) => _bridge.NotifyAttackReleased();
@@ -194,33 +197,46 @@ public sealed class TouchAttackButton : MonoBehaviour, IPointerDownHandler, IPoi
 ```
 
 ### Screen Swipe / Gesture Detection
-For gesture-based input (swipe-to-dodge, pinch-to-zoom):
+For gesture-based input (swipe-to-dodge, pinch-to-zoom).
+**Must use `EnhancedTouch` from the new Input System — never `Input.GetTouch()` (legacy).**
 
 ```csharp
+using UnityEngine.InputSystem.EnhancedTouch;
+using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
+
+/// <summary>
+/// Detects linear swipe gestures using the new Input System's EnhancedTouch API.
+/// Fires <see cref="OnSwipeDetected"/> with a normalized direction vector.
+/// </summary>
 public sealed class SwipeDetector : MonoBehaviour
 {
     [SerializeField] private float _minSwipeDistance = 50f;
+
+    /// <summary>Fires when a swipe gesture exceeds the minimum distance threshold.</summary>
+    public event Action<Vector2> OnSwipeDetected;
+
     private Vector2 _startPos;
 
-    public event Action<Vector2> OnSwipeDetected; // Normalized direction
-
-    private void Update()
+    private void OnEnable()
     {
-        if (Input.touchCount == 0) return;
+        EnhancedTouchSupport.Enable();
+        Touch.onFingerDown += HandleFingerDown;
+        Touch.onFingerUp += HandleFingerUp;
+    }
 
-        Touch touch = Input.GetTouch(0);
+    private void OnDisable()
+    {
+        Touch.onFingerDown -= HandleFingerDown;
+        Touch.onFingerUp -= HandleFingerUp;
+    }
 
-        switch (touch.phase)
-        {
-            case TouchPhase.Began:
-                _startPos = touch.position;
-                break;
-            case TouchPhase.Ended:
-                Vector2 delta = touch.position - _startPos;
-                if (delta.magnitude >= _minSwipeDistance)
-                    OnSwipeDetected?.Invoke(delta.normalized);
-                break;
-        }
+    private void HandleFingerDown(Finger finger) => _startPos = finger.screenPosition;
+
+    private void HandleFingerUp(Finger finger)
+    {
+        Vector2 delta = finger.screenPosition - _startPos;
+        if (delta.magnitude >= _minSwipeDistance)
+            OnSwipeDetected?.Invoke(delta.normalized);
     }
 }
 ```

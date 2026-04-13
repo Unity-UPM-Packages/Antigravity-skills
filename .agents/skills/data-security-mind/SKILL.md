@@ -1,6 +1,6 @@
 ---
 name: data-security-mind
-description: Use when architecting save games, protecting mobile PlayerPrefs, writing secure Repository logic, or when any user data is persisted to disk.
+description: Use when architecting save games, protecting mobile PlayerPrefs, writing secure Repository logic, or when any user data is persisted to disk. Also activates proactively when the AI detects PlayerPrefs storing currency, stats, or progression data, plain-text JSON saves without integrity checks, or any sensitive value written to disk without encryption.
 ---
 
 # Skill: Data Persistence & Security

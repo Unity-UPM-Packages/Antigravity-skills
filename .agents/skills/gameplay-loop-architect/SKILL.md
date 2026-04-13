@@ -1,6 +1,6 @@
 ---
 name: gameplay-loop-architect
-description: Use when designing the core game loop, managing game states (menu, playing, paused, game over), or architecting session lifecycle and win/lose conditions.
+description: Use when designing the core game loop, managing game states (menu, playing, paused, game over), or architecting session lifecycle and win/lose conditions. Also activates proactively when the AI detects a GameManager singleton, state logic scattered across MonoBehaviours, or direct game-state checks like "if (GameManager.Instance.IsPlaying)" anywhere in the codebase.
 ---
 
 # Skill: Gameplay Loop Architect

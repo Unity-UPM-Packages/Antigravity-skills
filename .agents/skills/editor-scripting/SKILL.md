@@ -1,6 +1,6 @@
 ---
 name: editor-scripting
-description: Use when asked to automate bulk asset modifications, or write Unity Editor Menu tools and Custom Inspectors.
+description: Use when asked to automate bulk asset modifications, or write Unity Editor Menu tools and Custom Inspectors. Also activates proactively when an MCP operation fails and an Editor Script fallback is needed, or when the AI detects any repetitive manual task (bulk renaming, texture re-compression, missing component fixing) that should be automated with a single menu click.
 ---
 
 # Skill: Editor Toolsmithing & Automation

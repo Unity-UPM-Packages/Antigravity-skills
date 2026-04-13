@@ -255,5 +255,5 @@ Before shipping a localized build:
 
 ## Cross-Skill References
 - Locale preference stored in settings → `skills/data-security-mind` (Tier 1 — PlayerPrefs is acceptable)
-- Localized text in UI screens built via MCP → `skills/wireframe-to-unity-mcp`
+- Localized text in UI screens built via MCP → `skills/prompt-to-mcp-builder`
 - Runtime locale loading of large narrative tables via Addressables → `skills/asset-loading`

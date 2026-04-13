@@ -232,4 +232,4 @@ When a test fails after implementation:
 ## Cross-Skill References
 - Writing testable code structure → `skills/modular-design` (Interface Contracts section)
 - Feature implementation alongside tests → `skills/create-feature` (Step 6)
-- Mocking complex scene dependencies → `skills/mcp-auto-architect` (not needed — use NSubstitute for logic)
+- Mocking complex scene dependencies → use NSubstitute for pure logic; see `skills/test-driven-dev` (Mocking section)

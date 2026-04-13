@@ -1,6 +1,6 @@
 ---
 name: ui-performance
-description: Use when optimizing uGUI Canvas layouts, batching elements to reduce draw calls, and preventing UI raycast overhead spikes.
+description: Use when optimizing uGUI Canvas layouts, batching elements to reduce draw calls, and preventing UI raycast overhead spikes. Also activates proactively when the AI detects dynamic UI elements sharing a Canvas with static elements, nested LayoutGroups deeper than 2 levels, or Image components with raycastTarget enabled on non-interactive decorations.
 ---
 
 # Skill: UI Performance Optimization (uGUI)

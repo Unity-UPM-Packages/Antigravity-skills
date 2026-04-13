@@ -213,15 +213,24 @@ Link volume parameter names to `AudioChannel` enum values for clean `SetFloat` c
 Game systems must **never** hold a reference to `IAudioService` unless they genuinely need to trigger audio. Prefer event-driven audio requests:
 
 ```csharp
-// PlayerController fires a domain event — it doesn't know about audio
+// PlayerController fires a domain event — it knows nothing about audio
 _health.OnDied += () => OnPlayerDied?.Invoke();
 
-// AudioListener subscribes and maps events to sounds
+// AudioListener bridges the domain event to the audio service
+// Receives dependencies via Construct() — no VContainer [Inject] needed
 public sealed class PlayerAudioListener : MonoBehaviour
 {
-    [Inject] private IAudioService _audio;
+    private IAudioService _audio;
+    private IPlayerEvents _player;
 
-    private void OnEnable() => _player.OnPlayerDied += HandlePlayerDied;
+    /// <summary>Injects audio service and player event source. Call from the scene Bootstrapper.</summary>
+    public void Construct(IAudioService audio, IPlayerEvents player)
+    {
+        _audio = audio;
+        _player = player;
+    }
+
+    private void OnEnable()  => _player.OnPlayerDied += HandlePlayerDied;
     private void OnDisable() => _player.OnPlayerDied -= HandlePlayerDied;
 
     private void HandlePlayerDied() => _audio.PlaySFX(AudioClipKey.Player_Die);
