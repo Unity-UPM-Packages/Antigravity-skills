@@ -1,3 +1,8 @@
+---
+name: wireframe-to-unity-mcp
+description: Use when the user provides a wireframe or skeleton image and asks to auto-generate the graphical layout visually in the Unity Editor.
+---
+
 # Workflow: Wireframe to Unity uGUI via MCP
 
 ## Objective
@@ -9,3 +14,4 @@ Convert a provided visual wireframe/mockup directly into instantiated native Uni
 3. **Performance Allocation**: Enforce `ui-performance.md` logic (e.g., isolating static background images vs highly dynamic scrolling lists) into distinct Canvas branches.
 4. **MCP Command Execution**: Invoke the Unity MCP Server tool calls to execute construction inside the Unity editor natively. (i.e. Automatically creating `GameObjects`, assigning `RectTransforms`, attaching `Image`/`Text` components).
 5. **System Output Checkout**: Validate the constructed system structure and ensure it integrates cleanly as an independent prefab logic module.
+

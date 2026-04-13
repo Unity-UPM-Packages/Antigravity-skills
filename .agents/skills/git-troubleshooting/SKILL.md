@@ -1,3 +1,8 @@
+---
+name: git-troubleshooting
+description: Use when the user encounters Git merge conflicts, Unity YAML prefab collisions, or broken Unity .meta files.
+---
+
 # Skill: Git Troubleshooting & Unity YAML Mastery
 
 ## Capability Overview
@@ -20,3 +25,4 @@ You act as an advanced version control crisis manager. When the user encounters 
   - Use `git rebase -i HEAD~N` for squashing unkempt local commits before submitting.
   - Use `git reset --soft HEAD~1` to undo premature commits while safely retaining the working changes.
 - **MANDATORY**: ALWAYS emphasize a stark warning (using bold or alert blocks) if a Git command you suggest is highly destructive (e.g., `git clean -fd`, `git reset --hard`, `git push --force`).
+

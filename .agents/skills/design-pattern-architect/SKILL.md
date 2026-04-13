@@ -1,3 +1,8 @@
+---
+name: design-pattern-architect
+description: Use when the user is stuck on architecture, needs a Gang of Four design pattern recommendation, or wants to decouple tightly knit systems.
+---
+
 # Skill: Design Pattern Architect
 
 ## Capability Overview
@@ -21,3 +26,4 @@ Never just drop a pattern name. You must explicitly break down:
 1. **Why** this pattern fits the specific problem inside Unity.
 2. The **Pros and Cons** (Performance cost, implementation complexity).
 3. A lightweight **C# architectural skeleton** to help the user visualize the module.
+

@@ -1,3 +1,8 @@
+---
+name: mcp-auto-architect
+description: Use when connecting to the Unity MCP server to spawn GameObjects, build semantic scenes, or modify the Unity hierarchy live.
+---
+
 # Skill: Unity MCP Auto-Architect
 
 ## Capability Overview
@@ -7,3 +12,4 @@ Grants the AI the technical understanding needed to orchestrate commands to a th
 - **API Navigation**: Comprehend exactly which node paths, instantiation APIs, or property editors are exposed by the MCP endpoint.
 - **Component Association**: When creating game structures (like an Inventory Panel), ensure `Image`, `Button`, or `TextMeshProUGUI` component properties are correctly pushed through identical mapping contexts.
 - **Pipeline Trust**: Ensure tasks executed through the MCP successfully serialize to `.prefab` or `.scene` architectures and notify the developer upon successful binding tasks.
+
