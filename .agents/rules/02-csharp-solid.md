@@ -1,4 +1,4 @@
-# Rule 01: C# SOLID & Script Composition
+# Rule 02: C# SOLID & Script Composition
 
 ## Overview
 This rule enforces strict architectural design to maintain codebase sanity and scalability. Avoid "Spaghetti Logic" and bloated monolithic `MonoBehaviour` classes.

@@ -1,4 +1,4 @@
-# Rule 02: Unity Mobile Optimization
+# Rule 03: Unity Mobile Optimization
 
 ## Overview
 Mobile games are extremely constrained by CPU, RAM, and thermal limitations. The engine's Garbage Collector (GC) causes stuttering/lag spikes if memory is poorly managed. Strict adherence to Zero Allocation is mandated.

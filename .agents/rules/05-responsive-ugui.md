@@ -1,4 +1,4 @@
-# Rule 04: Responsive uGUI Design
+# Rule 05: Responsive uGUI Design
 
 ## Overview
 Mobile devices possess varying aspect ratios (from elongated notches 19.5:9 to wide tablets 4:3). uGUI layouts must dynamically adjust automatically.

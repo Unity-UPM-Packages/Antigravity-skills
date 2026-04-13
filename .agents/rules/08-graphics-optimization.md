@@ -1,4 +1,4 @@
-# Rule 07: Mobile Graphics & Render Optimization
+# Rule 08: Mobile Graphics & Render Optimization
 
 ## Overview
 Rendering operations are lethal to Mobile batteries and FPS stability. You must architect Shaders, Materials, and Particle Systems strictly geared toward lightweight environments.

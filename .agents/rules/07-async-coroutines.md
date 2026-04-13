@@ -1,4 +1,4 @@
-# Rule 06: Dynamic Asynchronous Strategy
+# Rule 07: Dynamic Asynchronous Strategy
 
 ## Overview
 Asynchronous execution requires dynamic architectural choices depending on system scale, operation frequency, and data complexity. You must act as an analyst and recommend the appropriately scaled async tier strictly prior to implementation.
