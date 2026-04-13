@@ -1,3 +1,9 @@
+---
+trigger: always_on
+glob:
+description: Zero GC allocation in hot paths, object pooling, component caching, and IL2CPP-compatible patterns for mobile performance.
+---
+
 # Rule 03: Unity Mobile Optimization
 
 ## Overview

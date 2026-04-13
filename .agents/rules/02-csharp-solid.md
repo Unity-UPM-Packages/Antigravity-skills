@@ -1,3 +1,9 @@
+---
+trigger: always_on
+glob:
+description: SOLID principles, script composition over inheritance, and interface-driven design for all C# systems.
+---
+
 # Rule 02: C# SOLID & Script Composition
 
 ## Overview

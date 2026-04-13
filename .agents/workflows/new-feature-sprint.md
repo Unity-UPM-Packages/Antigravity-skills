@@ -1,3 +1,7 @@
+---
+description: Full feature lifecycle — scope gate, interface definition, pure logic, MonoBehaviour bridge, DI wiring, tests, and commit.
+---
+
 # Workflow: New Feature Sprint
 
 Execute the complete lifecycle of a new feature — from requirement analysis to a clean commit — following the `create-feature` skill SOP.

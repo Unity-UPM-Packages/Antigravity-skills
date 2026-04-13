@@ -1,3 +1,9 @@
+---
+trigger: always_on
+glob:
+description: MVP pattern for UI — Views are passive display surfaces that never contain game logic. Data flows via events and Presenter classes.
+---
+
 # Rule 04: UI Architecture (MVP Pattern)
 
 ## Overview

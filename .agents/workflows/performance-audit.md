@@ -1,3 +1,7 @@
+---
+description: Seven-step scan for GC allocations, anti-patterns, Canvas structure, async leaks, Addressables handles, and memory budget.
+---
+
 # Workflow: Performance Audit
 
 A comprehensive performance sweep across 5 tracks: CPU (GC), Memory, GPU/Rendering, UI, and Asset Pipeline. Output is a prioritized report with issues ranked by severity.

@@ -1,3 +1,7 @@
+---
+description: Emergency recovery protocol for broken .meta files, orphaned GUIDs, missing scripts, and corrupted prefab references.
+---
+
 # Workflow: Fix Meta Crisis
 
 Emergency recovery for a Unity project with broken references — typically caused by merge conflicts, deleted `.meta` files, or regenerated GUIDs. Symptoms: "Missing Script" errors, pink/magenta materials, null Prefab references in scenes.

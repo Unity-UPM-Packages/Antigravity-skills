@@ -1,3 +1,9 @@
+---
+trigger: always_on
+glob:
+description: URP/mobile shader governance, overdraw prevention, lighting constraints, and draw call batching for mobile rendering.
+---
+
 # Rule 08: Mobile Graphics & Render Optimization
 
 ## Overview

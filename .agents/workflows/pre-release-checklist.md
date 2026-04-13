@@ -1,3 +1,7 @@
+---
+description: Ten-step pre-release checklist covering build config, asset compression, security audit, store requirements, and release tagging.
+---
+
 # Workflow: Pre-Release Checklist
 
 A comprehensive checklist to complete before submitting to the App Store or Google Play. Execute in order — do not skip any step.

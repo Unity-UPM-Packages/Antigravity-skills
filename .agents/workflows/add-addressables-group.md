@@ -1,3 +1,7 @@
+---
+description: Create a new Addressables group with Decision Matrix, generic loader with handle leak prevention, interface contract, and pre-warm pattern.
+---
+
 # Workflow: Add Addressables Group
 
 Add a new Addressables Group to manage a specific category of assets (e.g., Enemy Prefabs, Level Environments, UI Bundles, Audio Clips). Ensures runtime loading is correct, labeled, backed by a loader script, and free of any `Resources.Load` calls.

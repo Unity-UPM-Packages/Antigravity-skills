@@ -1,3 +1,9 @@
+---
+trigger: always_on
+glob:
+description: Responsive layouts using correct anchors and pivots, SafeArea handling, and minimal LayoutGroup nesting for multi-resolution mobile.
+---
+
 # Rule 05: Responsive uGUI Design
 
 ## Overview

@@ -1,3 +1,9 @@
+---
+trigger: always_on
+glob:
+description: Naming conventions, Allman bracing, SerializeField encapsulation, XML documentation, and English-only code standards for all C# files.
+---
+
 # Rule 01: C# & Unity Coding Conventions
 
 ## Overview

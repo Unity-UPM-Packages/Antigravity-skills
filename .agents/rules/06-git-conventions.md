@@ -1,3 +1,9 @@
+---
+trigger: always_on
+glob:
+description: Conventional Commits format, atomic commits, .meta file safety, and .gitattributes requirements for Unity projects.
+---
+
 # Rule 06: Git & Code Versioning Conventions
 
 ## Overview
