@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: "[Game Designer] Asset production standards — texture sizes, polygon budgets, 9-slice rules, audio specs, and optimization constraints for mobile."
 ---

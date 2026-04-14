@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: "[2D Artist & UI/UX] Visual design standards — color theory, typography hierarchy, spacing systems, and visual consistency enforcement."
 ---

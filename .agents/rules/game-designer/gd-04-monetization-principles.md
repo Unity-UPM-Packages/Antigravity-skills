@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: "[Game Designer] F2P monetization ethics and strategy — IAP + Ads hybrid model, conversion funnels, and anti-pay-to-win constraints."
 ---

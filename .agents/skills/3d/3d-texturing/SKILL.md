@@ -87,5 +87,68 @@ Metallic/Smoothness: From mask map Alpha channel
 ## Best Practices
 - Always keep source files (PSD/XCF) — export final PNG for Unity
 - Mip Maps: ✅ Enable for 3D textures, ❌ Disable for UI sprites
-- Compression: ASTC 4×4 for high quality, ASTC 6×6 for mid, ASTC 8×8 for low
+- Compression: ASTC 4×4 for high quality, ASTC 6×6 for low
 - Name textures: `[type]_[model]_[map].png` (e.g., `albedo_knight_body.png`)
+
+---
+
+## 2D Artist Handoff Protocol
+
+### When 3D Artist works independently
+| Texture type | Method | 2D needed? |
+|---|---|---|
+| Normal Map | Bake from high-poly in Blender | ❌ No |
+| AO / Mask Map | Bake or procedural nodes | ❌ No |
+| PBR Realistic albedo | Procedural (Blender Shader Nodes) | ❌ No |
+| Toon / Stylized flat color | Procedural color ramp + noise | ❌ No |
+| Library textures | Substance / Poly Haven assets | ❌ No |
+
+### When to request 2D Artist
+| Style | Signal | Action |
+|---|---|---|
+| **Hand-painted cartoon** (Clash of Clans, Hay Day) | Albedo must have brush strokes, painted shadows, outlines | 🎨 Request 2D Artist |
+| **Illustrated / concept-art style** | Characters look like 2D illustrations on 3D form | 🎨 Request 2D Artist |
+| **Custom icon / emblem on UV** (clan badge, weapon engrave) | Requires original artwork | 🎨 Request 2D Artist |
+
+### How to hand off to 2D Artist
+When requesting hand-painted albedo from the 2D Artist role:
+
+**Step 1 — Provide UV Template**
+```
+1. Finish UV unwrap in Blender
+2. UV Editor → Overlays → Export UV Layout
+3. Format: PNG, Size: [Target Res], Fill Opacity: 0.25
+4. Output: uv_[model]_[part]_template.png
+```
+
+**Step 2 — Write Albedo Brief**
+
+```markdown
+## Albedo Paint Request: [Model Name]
+
+UV Template: uv_[model]_template.png
+Canvas Size: [512 / 1024 / 2048]
+Art Style: [Describe — e.g., "Clash of Clans-style hand painted, warm palette"]
+Color References: [From GD art direction or mood board]
+
+### Paint Instructions
+| UV Region | Description | Color Hint |
+|---|---|---|
+| Top-left | Body armor | Dark steel blue, rivets |
+| Center | Chest emblem | Gold, hand-drawn |
+| Bottom | Boots | Worn brown leather |
+
+### DO Nots
+- No photographic textures — fully painted
+- No gradients from photo tools — use brush strokes
+- Shadows must be hand-painted into the albedo (no baked AO from 3D)
+```
+
+**Step 3 — Receive & Import**
+```
+1. Receive: albedo_[model]_[part].png from 2D Artist
+2. Import to Blender → assign to material Base Color
+3. Verify UV alignment in viewport
+4. Re-bake Normal Map if needed (high-poly sculpt unchanged)
+5. Export FBX + textures together to Unity
+```

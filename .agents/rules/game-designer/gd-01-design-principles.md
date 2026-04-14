@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: "[Game Designer] Core design directives — player-first framing, scope discipline, core loop validation, and design-before-implementation mandate."
 ---

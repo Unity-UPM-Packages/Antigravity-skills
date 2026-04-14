@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: "[3D Artist] Shader standards for both URP and Built-in Render Pipeline, Shader Graph guidelines, HLSL coding rules, texture channel packing, and fill rate management."
 ---

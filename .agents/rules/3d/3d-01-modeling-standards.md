@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: "[3D Artist] Polygon budgets per asset category, clean topology requirements, UV unwrapping standards, and naming conventions for mobile 3D assets."
 ---

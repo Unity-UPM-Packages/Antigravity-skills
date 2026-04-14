@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: Game Designer balance framework — structured approach to tuning numbers, progression curves, and economy design.
 ---

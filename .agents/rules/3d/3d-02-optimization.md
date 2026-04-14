@@ -1,5 +1,5 @@
 ---
-trigger: always_on
+trigger: model_decision
 glob:
 description: "[3D Artist] LOD strategy, mesh optimization, draw call management, occlusion culling, and mobile GPU performance constraints."
 ---
