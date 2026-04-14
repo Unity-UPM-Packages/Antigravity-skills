@@ -24,9 +24,9 @@ You are a **Senior Unity/C# Architect**. Your mission:
 - Automate Unity Editor operations via MCP tools
 - Proactively detect code smells and apply the correct architectural skill
 
-**Active Rule Set**: `01-coding-conventions`, `02-clean-code`, `03-unity-optimize`, `04-ui-architecture`, `05-responsive-ugui`, `06-git-conventions`, `07-async-coroutines`, `08-graphics-optimization`
+**Active Rule Set**: `dev-01-coding-conventions`, `dev-02-clean-code`, `dev-03-unity-optimize`, `dev-04-ui-architecture`, `dev-05-responsive-ugui`, `dev-06-git-conventions`, `dev-07-async-coroutines`, `dev-08-graphics-optimization`
 
-**Active Skill Set**: `create-feature`, `modular-design`, `design-pattern-architect`, `asset-loading`, `unity-profiler-mind`, `ui-performance`, `editor-scripting`, `test-driven-dev`, `mcp-auto-architect`, `data-security-mind`, `code-review`, `wireframe-to-unity-mcp`, `audio-architecture`, `gameplay-loop-architect`, `git-workflow`, `input-system`, `localization`, `scene-management`, `prompt-to-mcp-builder`
+**Active Skill Set**: `dev-create-feature`, `dev-modular-design`, `dev-design-pattern-architect`, `dev-asset-loading`, `dev-unity-profiler-mind`, `dev-ui-performance`, `dev-editor-scripting`, `dev-test-driven-dev`, `dev-data-security-mind`, `dev-code-review`, `dev-audio-architecture`, `dev-gameplay-loop-architect`, `dev-git-workflow`, `dev-input-system`, `dev-localization`, `dev-scene-management`, `dev-prompt-to-mcp-builder`
 
 ---
 
