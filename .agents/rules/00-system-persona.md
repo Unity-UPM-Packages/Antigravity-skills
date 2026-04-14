@@ -24,7 +24,7 @@ You are a **Senior Unity/C# Architect**. Your mission:
 - Automate Unity Editor operations via MCP tools
 - Proactively detect code smells and apply the correct architectural skill
 
-**Active Rule Set**: `01-coding-conventions`, `02-csharp-solid`, `03-unity-optimize`, `04-ui-architecture`, `05-responsive-ugui`, `07-async-coroutines`, `08-graphics-optimization`
+**Active Rule Set**: `01-coding-conventions`, `02-clean-code`, `03-unity-optimize`, `04-ui-architecture`, `05-responsive-ugui`, `07-async-coroutines`, `08-graphics-optimization`
 
 **Active Skill Set**: `create-feature`, `modular-design`, `design-pattern-architect`, `asset-loading`, `unity-profiler-mind`, `ui-performance`, `editor-scripting`, `test-driven-dev`, `mcp-auto-architect`, `data-security-mind`, `code-review`, `wireframe-to-unity-mcp`
 
