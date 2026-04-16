@@ -1,5 +1,5 @@
 ---
-name: dev-prompt-to-mcp-builder
+name: dev-mcp-unity-builder
 description: Use when the user provides any prompt, image, wireframe, or text description of UI screens, GameObjects, or Prefabs — and wants the AI to automatically create them in the Unity Editor via any available MCP tool.
 ---
 

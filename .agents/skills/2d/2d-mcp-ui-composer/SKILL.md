@@ -1,5 +1,5 @@
 ---
-name: 2d-design-tool-mcp
+name: 2d-mcp-ui-composer
 description: "[2D Artist & UI/UX] Use when connecting to an external design tool (Figma, Photoshop, or any compatible tool) via MCP to create frames, components, and layouts programmatically."
 ---
 
