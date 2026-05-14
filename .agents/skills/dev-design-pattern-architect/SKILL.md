@@ -24,9 +24,14 @@ Inspect currently open or recently modified files for these red flags:
 | `Instantiate` / `Destroy` called during gameplay loops | Missing Object Pooling + Factory |
 | A single script managing both data, logic, AND visuals | Missing MVC/MVP split |
 
-### 1.2 Project State Context
-Use metadata from the workspace to classify the project's current lifecycle:
+### 1.2 Project State & Layer Context
+Classify the project's lifecycle AND the specific architectural layer of the code:
 
+**Layer Classification (Core-Domain Split):**
+- **Framework (Layer 1):** Highly reusable systems (Save, Audio, UI, Ads). Recommend abstract patterns (Service Locator, Dependency Injection, Event Bus, Strategy with Interfaces).
+- **Domain/Gameplay (Layer 2):** Game-specific business logic (Grid, Movement, Weapons). Recommend concrete patterns (FSM, Behavior Tree, Object Pool with Concrete Classes). Avoid interface-heavy patterns to prevent interface bloat.
+
+**Lifecycle Context:**
 - **Early Prototype** (< 5 systems, no tests): Favor *simplicity* — avoid over-engineering. Lean on basic patterns.
 - **Mid-Development** (5–15 systems, growing complexity): Enforce *modularity* — introduce State Machines, Observer, Service patterns.
 - **Late / Shipping** (> 15 systems, performance-critical): Enforce *performance* — prioritize patterns with zero GC overhead and minimal overhead.
@@ -134,7 +139,7 @@ Provide a minimal C# scaffold applying the chosen pattern in Unity context, foll
 End with a checkbox list the user can verify before merging:
 
 - [ ] Pattern does not create new GC allocations in hot paths
-- [ ] Interfaces defined before concrete implementations
+- [ ] Interfaces defined before concrete implementations (ONLY if in Framework layer or requires mock testing; otherwise use Concrete Classes for Domain logic)
 - [ ] System can be unit tested independently (no hard scene dependencies)
 - [ ] Fits the current project lifecycle phase (Prototype / Mid / Late)
 - [ ] Does not conflict with an existing pattern already in use

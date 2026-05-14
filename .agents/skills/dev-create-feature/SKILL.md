@@ -1,6 +1,6 @@
 ---
 name: dev-create-feature
-description: Use when implementing any new system, mechanic, functionality, or behaviour in the project — whether the user says "create", "add", "implement", "build", "I want X to happen", or describes desired behaviour. Also activates proactively when the AI determines a new independent system is needed to support a request. Enforces interface-first, modular, and UPM-extractable architecture on every implementation.
+description: Use when implementing any new system, mechanic, functionality, or behaviour in the project — whether the user says "create", "add", "implement", "build", "I want X to happen", or describes desired behaviour. Also activates proactively when the AI determines a new independent system is needed to support a request. Enforces Core-Domain Split: interface-first for Frameworks, and concrete class-driven for Gameplay Logic.
 ---
 
 # Skill: Feature Implementation
@@ -18,8 +18,14 @@ Before writing a single line of code, answer these 4 questions:
 
 ## Execution Sequence
 
-### Step 1 — Define Contracts (Interfaces)
-Create interface files in `Scripts/Core/<FeatureName>/`. No implementation yet. This step forces clarity about what the system actually does before getting lost in implementation details.
+### Step 0 — Layer Classification (Framework vs Domain)
+Before creating any files, explicitly classify the feature:
+- **Framework (Layer 1):** Highly reusable systems (Save, Audio, UI, Ads). **Must** use Interface-first.
+- **Domain/Gameplay (Layer 2):** Game-specific business logic (Grid, Movement, Weapons). **Must NOT** use Interfaces unless required for mocking. Implement as Concrete Classes.
+
+### Step 1 — Define Contracts (If Framework) OR Concrete Classes (If Domain)
+**For Framework:** Create interface files in `Scripts/Core/<FeatureName>/`. No implementation yet. This step forces clarity about what the system actually does before getting lost in implementation details.
+**For Domain:** Skip interfaces. Create the concrete class directly in `Scripts/Systems/<FeatureName>/`.
 
 ```csharp
 // IInventorySystem.cs — in Game.Core.asmdef
@@ -257,7 +263,7 @@ Packages/com.yourname.inventory/
 | `public` fields on MonoBehaviour | `[SerializeField] private` |
 | Logic inside `Update()` that could be event-driven | Subscribe to events in `OnEnable` |
 | `FindObjectOfType<T>()` to locate dependencies | Inject via DI or `Construct()` |
-| Skipping the interface step for "simple features" | Always define the interface — simplicity changes |
+| Creating interfaces for Game-Specific Domain Logic | Use Concrete Classes for Domain logic, reserve Interfaces for Framework/Core |
 | Placing network/save calls inside the view | Delegate to a service via interface |
 
 ---

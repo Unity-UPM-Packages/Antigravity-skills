@@ -1,6 +1,6 @@
 ---
 name: dev-modular-design
-description: Use when architecting C# components, reviewing component responsibilities, or designing how systems communicate. Also activates proactively when the AI detects a MonoBehaviour doing multiple unrelated things, direct component references instead of interfaces, or missing event-based decoupling — at any point during a task.
+description: Use when architecting C# components, reviewing component responsibilities, or designing how systems communicate. Also activates proactively when the AI detects a MonoBehaviour doing multiple unrelated things, direct component references instead of interfaces (for Framework code), or missing event-based decoupling — at any point during a task.
 ---
 
 # Skill: Modular Design Thinking
@@ -45,12 +45,18 @@ public class SwimmingFlyingShootingEnemy : FlyingEnemy { }
 public sealed class EnemyController : MonoBehaviour { }
 ```
 
-### 3. Interface Contracts Before Concrete Classes
-Always define behavior as an interface **before** writing implementation. This enforces Dependency Inversion and makes unit testing possible without scene setup.
+### 3. Interface Contracts (Framework) vs Concrete Classes (Domain)
+Always apply the **Core-Domain Split (Screaming Architecture)**:
+- **Framework Systems** (Reusable: Save, Audio, Input): Always define behavior as an interface **before** writing implementation.
+- **Domain Systems** (Game-Specific: Grid Logic, Arrows, Spawners): Use **Concrete Classes** directly. Avoid interface bloat unless strictly needed for Mock Unit Testing.
 
 ```csharp
-public interface IHealthSystem
-{
+// Framework (Interface-First)
+public interface ISaveSystem { ... }
+
+// Domain (Concrete Class)
+public sealed class GridSystem { ... }
+```
     int CurrentHealth { get; }
     int MaxHealth { get; }
     void TakeDamage(int amount);
@@ -100,6 +106,7 @@ private void OnDisable() => _health.OnDied -= HandleDeath;
 ## When NOT to Decouple (Over-Engineering Warning)
 
 ❌ Do NOT introduce interfaces + event buses for:
+- **Game-Specific Business Logic (Domain)**: Never create an interface for a system like `GridSystem` or `MovementSystem` unless you are actively writing a mock for a Unit Test.
 - Internal utility classes used in exactly one place
 - Systems that will realistically never have a second implementation
 - Early-prototype code still changing shape every day (label with `// PROTOTYPE — refactor before merge`)
